@@ -1,0 +1,24 @@
+// Ejercicio #1 de punteros *Rellenar un arreglo con n numeros, posteriormente utilizando punteros determinar el menor elemento del arreglo* 
+
+#include <iostream>
+using namespace std;
+
+int main(){
+  int numeros[5], *dir_numeros, Nmenor, aux; //Se crean las variables, haciendo enfasis en [*dir_numeros] que es tipo puntero, es decir, que almacenara una ubicacion de memoria
+  for(int i = 0; i < 5; i++){
+    cout << "\n\t|Digite el numero [" << i + 1 << "]: ";
+    cin >> numeros[i];
+  }
+
+  dir_numeros = numeros; // La variable tipo puntero adquiere la primera posicion del array "numeros"
+
+  for(int i = 0; i < 5; i++){
+    if (*dir_numeros  < Nmenor){
+      Nmenor = *dir_numeros;
+    }
+    dir_numeros++;
+  }
+  cout << "\n\t|El numero menor es: " << Nmenor;
+
+return 0;
+}
