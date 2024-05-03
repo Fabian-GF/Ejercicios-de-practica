@@ -1,0 +1,66 @@
+* Hacer una funcion para almacenar N numeros en un arreglo dinamico, y otra funcion para encontrar un numero especifico dentro del array *
+
+#include <iostream>
+using namespace std;
+int nElementos, *elementos;
+
+void LeerNumeros(); //Se declara la funcion que creara el array dinamico junto con los numeros que se ingresen
+int BusquedaDeNumero(int *, int); //Se declara la funcion que buscara el numero deseado
+
+int main(){
+    LeerNumeros();
+    BusquedaDeNumero( elementos, nElementos);
+  delete[] elementos;
+}
+
+//Se crea la funcion para ingresar valores por medio de la terminal
+void LeerNumeros(){
+    cout << "\n\t|Digite el numero de elementos que va a insertar: |";
+    cin >> nElementos;
+
+    elementos = new int[nElementos];
+
+    for (int i = 0; i < nElementos; i++){
+        cout << "\n\t|Digite el elemento numero [" << i  << "]: ";
+        cin >> elementos[i];
+    }
+}
+
+//Se crea la funcion que buscara el valor
+int  BusquedaDeNumero(int *elementos, int nElementos){
+
+  int aux1 = 0, Nbuscar, encontrado;
+  for ( int i = 0; i < nElementos; i++){
+      cout << "\n\t|Elemento en [" << i << "]: " << elementos[i];
+  }
+
+  cout << "\n\t|Digite el numero que desea encontrar:";
+  cin >> Nbuscar;
+  int i = 0;
+  do {
+    cout << elementos[i] << endl;
+      if (elementos[i] == Nbuscar){
+          encontrado = 1;
+          aux1 = elementos[i];
+      } else {
+          encontrado = 0;
+      }
+      i++;
+  } while (encontrado == !1 && i < nElementos);
+  if ( encontrado == 1){
+      cout << "\n\t|El numero [" << Nbuscar << "] fue encontrado en la posicion del array [" << i-1 << "]";
+  } else {
+      cout << "\n\t|El numero no fue encontrado |";
+  } 
+  
+  /* for(int i = 0; i < nElementos; i++){  // Ordenar array
+    for ( int j = 0; j < nElementos; j++){
+        if (*(elementos + j) > *(elementos +j + 1)){
+           aux = *(elementos + j);
+           *(elementos + j) = *(elementos + j + 1);
+           *(elementos + j + 1) = aux;
+        }
+    }
+  } */
+  return 0;
+}
